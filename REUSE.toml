@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 Alex Brandt
+# SPDX-License-Identifier: MIT
+
+# Copyright and licensing for files that cannot carry inline SPDX headers.
+
+version = 1
+SPDX-PackageName = "git-worktree-poi"
+SPDX-PackageSupplier = "Alex Brandt"
+SPDX-PackageDownloadLocation = "https://github.com/alunduil/git-worktree-poi"
+
+# A header would render on GitHub's landing page.
+
+[[annotations]]
+path = "**.md"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Alex Brandt"
+SPDX-License-Identifier = "MIT"
+
+# Cargo regenerates the lockfile wholesale and drops any header.
+
+[[annotations]]
+path = "Cargo.lock"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Alex Brandt"
+SPDX-License-Identifier = "MIT"
+
+# GitHub's license detector matches only root-level filenames, so the text
+# stays here as well as under LICENSES/.
+
+[[annotations]]
+path = "LICENSE"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Alex Brandt"
+SPDX-License-Identifier = "MIT"
