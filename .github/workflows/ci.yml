@@ -29,7 +29,66 @@ jobs:
         with:
           persist-credentials: false
 
+      # The clippy hook compiles every dependency.
+      - name: Cache Rust build
+        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+
       - name: Run hooks
         uses: j178/prek-action@44924fe9ef4a6f88253c4b6b1bf11c689d3ce53d # v3.1.0
         with:
           prek-version: '0.5.7'
+
+  test:
+    name: Run the test suite
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Cache Rust build
+        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+
+      - name: Run tests
+        run: cargo test --locked
+
+  deny:
+    name: Check dependency policy
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install cargo-deny
+        run: ./scripts/install-cargo-deny.sh
+
+      - name: Check dependencies
+        run: cargo deny --locked check
+
+  build:
+    name: Build the x86_64 Linux release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Cache Rust build
+        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+
+      - name: Build
+        run: cargo build --release --locked --target x86_64-unknown-linux-gnu
+
+      # A build proves the crate compiles, not that the CLI still answers.
+      - name: Run the built binary
+        run: ./target/x86_64-unknown-linux-gnu/release/git-worktree-poi --version

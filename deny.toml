@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2026 Alex Brandt
+# SPDX-License-Identifier: MIT
+
+# Only the release target ships, so other platforms' dependencies stay out of
+# scope.
+[graph]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[advisories]
+unmaintained = "all"
+yanked = "deny"
+
+[licenses]
+allow = ["Apache-2.0", "MIT", "Unicode-3.0"]
+
+[bans]
+multiple-versions = "deny"
+wildcards = "deny"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
