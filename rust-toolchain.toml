@@ -1,0 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Alex Brandt
+# SPDX-License-Identifier: MIT
+
+[toolchain]
+channel = "1.99.1"
+components = ["clippy", "rustfmt"]
