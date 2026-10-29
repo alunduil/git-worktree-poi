@@ -24,13 +24,15 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Checkout repository
+      - &checkout
+        name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       # The clippy hook compiles every dependency.
-      - name: Cache Rust build
+      - &rust-cache
+        name: Cache Rust build
         uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
 
       - name: Run hooks
@@ -44,13 +46,8 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
-      - name: Cache Rust build
-        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+      - *checkout
+      - *rust-cache
 
       - name: Run tests
         run: cargo test --locked
@@ -61,10 +58,7 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
+      - *checkout
 
       - name: Install cargo-deny
         run: ./scripts/install-cargo-deny.sh
@@ -77,18 +71,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
+    env:
+      TARGET: x86_64-unknown-linux-gnu
 
-      - name: Cache Rust build
-        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2.9.3
+    steps:
+      - *checkout
+      - *rust-cache
 
       - name: Build
-        run: cargo build --release --locked --target x86_64-unknown-linux-gnu
+        run: cargo build --release --locked --target "$TARGET"
 
       # A build proves the crate compiles, not that the CLI still answers.
       - name: Run the built binary
-        run: ./target/x86_64-unknown-linux-gnu/release/git-worktree-poi --version
+        run: ./target/"$TARGET"/release/git-worktree-poi --version
