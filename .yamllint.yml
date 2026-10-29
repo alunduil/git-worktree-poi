@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Alex Brandt
+# SPDX-License-Identifier: MIT
+---
+extends: default
+
+rules:
+  # Version comments after SHA pins take one space.
+  comments:
+    min-spaces-from-content: 1
+
+  # `on:` is a GitHub Actions trigger key, not a boolean.
+  truthy:
+    allowed-values: ['true', 'false', 'on']
+    check-keys: false
