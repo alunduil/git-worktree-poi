@@ -4,7 +4,7 @@
 extends: default
 
 rules:
-  # Version comments after SHA pins take one space.
+  # Allows the `@<sha> # v1.2.3` action pin style.
   comments:
     min-spaces-from-content: 1
 
