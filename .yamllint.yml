@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Alex Brandt
+# SPDX-License-Identifier: MIT
+---
+extends: default
+
+rules:
+  # Allows the `@<sha> # v1.2.3` action pin style.
+  comments:
+    min-spaces-from-content: 1
+
+  # `on:` is a GitHub Actions trigger key, not a boolean.
+  truthy:
+    allowed-values: ['true', 'false', 'on']
+    check-keys: false

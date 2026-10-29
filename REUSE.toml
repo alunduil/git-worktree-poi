@@ -1,0 +1,17 @@
+# SPDX-FileCopyrightText: 2026 Alex Brandt
+# SPDX-License-Identifier: MIT
+
+version = 1
+SPDX-PackageName = "git-worktree-poi"
+SPDX-PackageSupplier = "Alex Brandt"
+SPDX-PackageDownloadLocation = "https://github.com/alunduil/git-worktree-poi"
+
+# - Cargo.lock: Cargo regenerates it and drops any header.
+# - LICENSE: GitHub detects the license only from root-level files, so the
+#   text stays here as well as under LICENSES/.
+
+[[annotations]]
+path = ["Cargo.lock", "LICENSE"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Alex Brandt"
+SPDX-License-Identifier = "MIT"
