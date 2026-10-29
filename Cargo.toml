@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Alex Brandt
+# SPDX-License-Identifier: MIT
+
+[package]
+name = "git-worktree-poi"
+version = "0.0.0"
+edition = "2024"
+description = "Prune git worktrees whose branch has merged or whose upstream is gone, and report what's left in a gh-poi-style summary. Reach for it when a worktree-per-branch workflow leaves stale checkouts behind; run it by hand or on a systemd timer."
+repository = "https://github.com/alunduil/git-worktree-poi"
+license = "MIT"
+
+[dependencies]
+clap = { version = "4.6.7", features = ["derive"] }
