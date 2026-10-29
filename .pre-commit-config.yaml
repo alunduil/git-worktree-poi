@@ -1,6 +1,9 @@
 # SPDX-FileCopyrightText: 2026 Alex Brandt
 # SPDX-License-Identifier: MIT
 ---
+# Cargo owns Cargo.lock's layout.
+exclude: ^Cargo\.lock$
+
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
@@ -28,16 +31,13 @@ repos:
         args: ['--strict']
 
   # The licensing gate reads REUSE.toml, so a malformed one fails confusingly.
-  # Cargo owns Cargo.lock's layout.
   - repo: https://github.com/tombi-toml/tombi-pre-commit
     rev: v1.9.6
     hooks:
       - id: tombi-format
         args: ['--offline']
-        exclude: ^Cargo\.lock$
       - id: tombi-lint
         args: ['--offline']
-        exclude: ^Cargo\.lock$
 
   # Every tracked file declares copyright and licence, inline or via
   # REUSE.toml.
