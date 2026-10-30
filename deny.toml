@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Alex Brandt
 # SPDX-License-Identifier: MIT
 
-# Only the release target ships, so other platforms' dependencies stay out of
-# scope.
+# Only the release target ships, so cargo deny skips other platforms'
+# dependencies.
 [graph]
 targets = ["x86_64-unknown-linux-gnu"]
 

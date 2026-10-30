@@ -81,6 +81,6 @@ jobs:
       - name: Build
         run: cargo build --release --locked --target "$TARGET"
 
-      # A build proves the crate compiles, not that the CLI still answers.
+      # Catches a binary that builds but fails at startup.
       - name: Run the built binary
         run: ./target/"$TARGET"/release/git-worktree-poi --version
