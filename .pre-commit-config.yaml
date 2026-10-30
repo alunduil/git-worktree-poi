@@ -46,3 +46,19 @@ repos:
     rev: v6.2.0
     hooks:
       - id: reuse
+
+  # Cargo checks the whole crate, so it takes no file names.
+  - repo: local
+    hooks:
+      - id: cargo-fmt
+        name: cargo fmt
+        entry: cargo fmt --all
+        language: system
+        types: [rust]
+        pass_filenames: false
+      - id: cargo-clippy
+        name: cargo clippy
+        entry: cargo clippy --all-targets --locked -- -D warnings
+        language: system
+        files: (\.rs|^Cargo\.toml)$
+        pass_filenames: false
