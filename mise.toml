@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 Alex Brandt
+# SPDX-License-Identifier: MIT
+
+[settings]
+locked = true
+lockfile_platforms = ["linux-x64"]
+
+[tools]
+cargo-deny = "0.20.2"

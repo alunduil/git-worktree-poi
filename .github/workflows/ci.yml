@@ -60,8 +60,10 @@ jobs:
     steps:
       - *checkout
 
-      - name: Install cargo-deny
-        run: ./scripts/install-cargo-deny.sh
+      - name: Set up cargo-deny
+        uses: jdx/mise-action@8418fedb1110381a0d3ba51a7a415d7c1b884550 # v5.2.2
+        with:
+          install_args: cargo-deny
 
       - name: Check dependencies
         run: cargo deny --locked check
