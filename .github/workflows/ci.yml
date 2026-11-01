@@ -20,7 +20,7 @@ concurrency:
 jobs:
   pre-commit:
     name: Run pre-commit hooks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
 
     steps:
@@ -51,7 +51,7 @@ jobs:
 
   test:
     name: Run the test suite
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
 
     steps:
@@ -63,7 +63,7 @@ jobs:
 
   deny:
     name: Check dependency policy
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
 
     steps:
@@ -79,7 +79,7 @@ jobs:
 
   build:
     name: Build the x86_64 Linux release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
 
     env:
