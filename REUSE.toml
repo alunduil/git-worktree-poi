@@ -9,9 +9,10 @@ SPDX-PackageDownloadLocation = "https://github.com/alunduil/git-worktree-poi"
 # - Cargo.lock, mise.lock: their tools regenerate them and drop any header.
 # - LICENSE: GitHub detects the license only from root-level files, so the
 #   text stays here as well as under LICENSES/.
+# - renovate.json: JSON has no comment syntax.
 
 [[annotations]]
-path = ["Cargo.lock", "LICENSE", "mise.lock"]
+path = ["Cargo.lock", "LICENSE", "mise.lock", "renovate.json"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Alex Brandt"
 SPDX-License-Identifier = "MIT"
