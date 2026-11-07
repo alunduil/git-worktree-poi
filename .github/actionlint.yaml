@@ -1,8 +1,8 @@
 # SPDX-FileCopyrightText: 2026 Alex Brandt
 # SPDX-License-Identifier: MIT
 ---
-# GitHub hosts ubuntu-26.04, but actionlint doesn't list it yet
-# (rhysd/actionlint#682). Delete this file once a release does.
+# actionlint's known runner labels omit ubuntu-26.04
+# (rhysd/actionlint#682). Delete this file once they include it.
 self-hosted-runner:
   labels:
     - ubuntu-26.04
