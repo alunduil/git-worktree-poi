@@ -20,7 +20,7 @@ concurrency:
 jobs:
   pre-commit:
     name: Run pre-commit hooks
-    runs-on: &runner ubuntu-24.04
+    runs-on: &runner ubuntu-26.04
     timeout-minutes: 10
 
     steps:
