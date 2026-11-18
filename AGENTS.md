@@ -5,24 +5,17 @@ SPDX-License-Identifier: MIT
 
 # Agent instructions for git-worktree-poi
 
-Rules a coding agent can't infer from the files. Linters and hooks in
-`.pre-commit-config.yaml` cover everything else.
-
-## Tooling
-
-- Pre-commit hooks run under prek, which mise installs from `mise.toml`. Run
-  them with `prek run --all-files`.
-- `mise.toml` sets `locked = true`, so bumping a tool version there also needs
-  `mise lock`, or the install fails.
+Rules a coding agent can't infer from the files. Hooks in
+`.pre-commit-config.yaml` cover everything else; run them with
+`prek run --all-files`, using the prek that mise installs from `mise.toml`.
 
 ## CI and branch protection
 
-- Required status checks are listed by job `name:` in
-  `terraform/alunduil/repositories.tf` in alunduil/alunduil-infrastructure, not
-  in this repository. Renaming a CI job, or adding one that must gate merges,
-  needs a matching change there.
-- Renovate automerges green updates and waits only on those listed checks, so a
-  new job blocks nothing until it's listed.
+Required status checks are listed by job `name:` in
+`terraform/alunduil/repositories.tf` in alunduil/alunduil-infrastructure, not in
+this repository. Renaming a CI job, or adding one that must gate merges, needs a
+matching change there. Until then the job gates nothing, and Renovate automerges
+green updates without waiting for it.
 
 ## Commits, issues, and pull requests
 
