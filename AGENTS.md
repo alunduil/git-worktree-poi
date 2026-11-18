@@ -5,22 +5,20 @@ SPDX-License-Identifier: MIT
 
 # Agent instructions for git-worktree-poi
 
-Rules a coding agent can't infer from the files. Hooks in
-`.pre-commit-config.yaml` cover everything else; run them with
-`prek run --all-files`, using the prek that mise installs from `mise.toml`.
+Run the pre-commit hooks with `prek run --all-files`.
 
-## CI and branch protection
+## Change a CI job
 
-Required status checks are listed by job `name:` in
-`terraform/alunduil/repositories.tf` in alunduil/alunduil-infrastructure, not in
-this repository. Renaming a CI job, or adding one that must gate merges, needs a
-matching change there. Until then the job gates nothing, and Renovate automerges
-green updates without waiting for it.
+alunduil/alunduil-infrastructure lists this repository's required status
+checks, by job `name:`, in `terraform/alunduil/repositories.tf`. Update that
+list in the same change:
 
-## Commits, issues, and pull requests
+- A new job gates nothing until listed, and Renovate automerges without it.
+- A renamed job leaves its old name required, which blocks every merge.
 
-- Pull requests squash merge, and the pull request title becomes the commit
-  subject. Write it as an imperative sentence in plain English, not
-  Conventional Commits.
-- Issue titles state the outcome as a present-tense fact, such as "Pruning
-  spares a worktree a session is starting in".
+## Title pull requests and issues
+
+- Write a pull request title as an imperative sentence. Squash merge makes it
+  the commit subject.
+- Write an issue title as the outcome, stated as a present-tense fact:
+  "Pruning spares a worktree a session is starting in".

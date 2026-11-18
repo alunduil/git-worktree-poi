@@ -6,7 +6,7 @@ locked = true
 lockfile_platforms = ["linux-x64"]
 
 [tools]
-# With `locked = true`, a bumped version fails to install until `mise lock`
-# records it.
+# Run `mise lock` after bumping a version; `locked = true` refuses any version
+# missing from `mise.lock`.
 cargo-deny = "0.20.2"
 prek = "0.5.10"

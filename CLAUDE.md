@@ -5,8 +5,6 @@ SPDX-License-Identifier: MIT
 
 # Claude Code instructions for git-worktree-poi
 
-Claude Code reads this file and not `AGENTS.md`, so the import below pulls the
-repository's agent rules in. Add a rule here only when it's false for every
-other agent.
+Add a rule here only when it holds for Claude Code alone.
 
 @AGENTS.md
