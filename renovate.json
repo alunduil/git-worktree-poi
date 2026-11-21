@@ -4,5 +4,14 @@
     "github>alunduil/renovate-config",
     "github>alunduil/renovate-config:automerge-workflow-majors",
     "github>alunduil/renovate-config:automerge-minor"
+  ],
+  "packageRules": [
+    {
+      "description": "Required checks run these as this repo does, so green CI covers a 0.x patch: Run pre-commit hooks runs prek, and Check dependency policy runs cargo-deny",
+      "matchManagers": ["mise"],
+      "matchUpdateTypes": ["patch"],
+      "matchDepNames": ["cargo-deny", "prek"],
+      "automerge": true
+    }
   ]
 }
