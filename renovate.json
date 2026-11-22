@@ -7,7 +7,7 @@
   ],
   "packageRules": [
     {
-      "description": "'Check dependency policy' runs cargo-deny against deny.toml, so a 0.x update that breaks the policy check fails CI",
+      "description": "'Check dependency policy' runs cargo-deny against deny.toml in a required check, which catches a broken 0.x update before merge",
       "matchManagers": ["mise"],
       "matchUpdateTypes": ["patch", "minor"],
       "matchDepNames": ["cargo-deny"],
