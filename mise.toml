@@ -8,5 +8,5 @@ lockfile_platforms = ["linux-x64"]
 [tools]
 # Run `mise lock` after bumping a version; `locked = true` refuses any version
 # missing from `mise.lock`.
-cargo-deny = "0.22.0"
+cargo-deny = "0.22.1"
 prek = "0.5.11"
