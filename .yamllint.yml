@@ -8,8 +8,7 @@ rules:
   comments:
     min-spaces-from-content: 1
 
-  # A SHA-pinned `uses:` line with its version comment runs past 80, and a
-  # pinned reusable workflow past 120.
+  # A SHA-pinned reusable workflow's `uses:` line runs past 120.
   line-length:
     max: 140
 
