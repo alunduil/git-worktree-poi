@@ -95,3 +95,10 @@ jobs:
       # Catches a binary that builds but fails at startup.
       - name: Run the built binary
         run: ./target/"$TARGET"/release/git-worktree-poi --version
+
+  check-renovate-commits:
+    name: Check Renovate branch commits
+    uses: alunduil/renovate-config/.github/workflows/check-renovate-commits.yml@6052341d076d02929cd58ba8a5245d4cf13955af # main
+    permissions:
+      contents: read
+      pull-requests: read

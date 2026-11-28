@@ -8,9 +8,9 @@ rules:
   comments:
     min-spaces-from-content: 1
 
-  # A SHA-pinned `uses:` line with its version comment runs past 80.
+  # A SHA-pinned reusable workflow's `uses:` line runs past 120.
   line-length:
-    max: 120
+    max: 140
 
   # `on:` is a GitHub Actions trigger key, not a boolean.
   truthy:
